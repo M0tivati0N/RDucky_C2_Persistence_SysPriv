@@ -34,7 +34,5 @@ and a high integrity session/agent is created - with System Privileges
 
 - Windows will reactivate WinDefend at some point, with an update or similar
 
-- This method will bypass Defender and AMSI initially, but will be blocked sooner or later.
-
 - However, often WinDefender gets deactivated in presence of an AV.
 If this is the case, and your payload can bypass AVs, then problem won't exist.
