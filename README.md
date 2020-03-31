@@ -3,11 +3,15 @@ RDucky_C2_Session_with_System_Privileges_Persistence
 
 This script for Rubber Ducky will:
 
-1> Open an Admin Powershell session from Run window
-Deactivate firewall and Windefend (at startup too), and delete Run Hystory
-Download and run an amazing tool 'RunAsTI' by jschicht https://github.com/jschicht/RunAsTI
-Create a startup scheduled task which will download and run your payload
-Clear logs
+- Open an Admin Powershell session from Run window
+
+- Deactivate firewall and Windefend (at startup too), and delete Run Hystory
+
+- Download and run an amazing tool 'RunAsTI' by jschicht https://github.com/jschicht/RunAsTI
+
+- Create a startup scheduled task which will download and run your payload
+
+- Clear logs
 
 Notes:
 Tested on Windows 10 Pro VM (WinDefender and no other AV)
