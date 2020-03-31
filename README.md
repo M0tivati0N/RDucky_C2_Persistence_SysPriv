@@ -1,6 +1,8 @@
 RDucky_C2_Session_with_System_Privileges_Persistence
-Empire persistence with System Level Privileges 
+
+
 This script for Rubber Ducky will:
+
 Open an Admin Powershell session from Run window
 Deactivate firewall and Windefend (at startup too), and delete Run Hystory
 Download and run an amazing tool 'RunAsTI' by jschicht https://github.com/jschicht/RunAsTI
